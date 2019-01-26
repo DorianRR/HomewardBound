@@ -13,14 +13,16 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     [Range(0.01f, 1)]
-    private float CameraPositionLag;
+    private float CameraPositionLag = 1f;
 
     [SerializeField]
     [Range(0.01f, 1)]
-    private float CameraRotationLag;
+    private float CameraRotationLag = 1f;
 
     private Vector3 OffSet = Vector3.zero;
-    private bool DoOnce = true;
+    private bool DoOnceRagdoll = true;
+    private bool DoOnceDefault = false;
+
 
     void Update()
     {
@@ -28,42 +30,45 @@ public class CameraController : MonoBehaviour
         switch (OwnedPlayer.Move_Mode)
         {
             case (MOVEMENT_MODE.DEFAULT):
-                DoOnce = true;
+                DoOnceRagdoll = true;
+                if(DoOnceDefault)
+                {
+                    transform.rotation = OwnedPlayer.transform.rotation;
+
+                    //transform.position = new Vector3(OwnedPlayer.transform.position.x, OwnedPlayer.transform.position.y + 0.75f, OwnedPlayer.transform.position.z - 0.5f);
+
+                    DoOnceDefault = false;
+
+                }
                 HandleDefaultMovement();
                 break;
 
             case (MOVEMENT_MODE.RAGDOLL):
                 transform.parent = null;
-                if (DoOnce)
+                if (DoOnceRagdoll)
                 {
-                    OffSet = transform.position - OwnedPlayer.GetComponent<Rigidbody>().velocity;
-                    DoOnce = false;
+                    OffSet = (transform.position - OwnedPlayer.GetComponent<Rigidbody>().velocity).normalized*10f;
+                    DoOnceRagdoll = false;
+                    DoOnceDefault = true;
                 }
-
                 HandleRagdollMovement();
                 break;
         }
     }
 
-    private void HandleDefaultMovement()
-    {
-
-        //transform.position = new Vector3(OwnedPlayer.transform.position.x, OwnedPlayer.transform.position.y + 0.75f, OwnedPlayer.transform.position.z - 0.5f);
-        //transform.rotation = OwnedPlayer.transform.rotation;
-
-        return;
-    }
-
     private void HandleRagdollMovement()
     {
-        transform.position = new Vector3(OwnedPlayer.transform.position.x, OwnedPlayer.transform.position.y, OwnedPlayer.transform.position.z);
-
-
-
+        transform.position = Vector3.Lerp(transform.position, new Vector3(OwnedPlayer.transform.position.x, OwnedPlayer.transform.position.y + 0.75f, OwnedPlayer.transform.position.z - 0.5f) + OffSet, CameraPositionLag);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((OwnedPlayer.transform.position - transform.position).normalized, transform.up), CameraRotationLag);
+        
     }
+    
 
-    private void ReturnToDefault()
+    private void HandleDefaultMovement()
     {
+        //transform.parent = OwnedPlayer.transform;
 
+        transform.position = new Vector3(OwnedPlayer.transform.position.x, OwnedPlayer.transform.position.y + (OwnedPlayer.transform.up.y), OwnedPlayer.transform.position.z - (OwnedPlayer.transform.forward.z));
     }
+
 }
