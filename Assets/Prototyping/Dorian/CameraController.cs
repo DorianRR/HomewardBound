@@ -44,14 +44,14 @@ public class CameraController : MonoBehaviour
                 break;
 
             case (MOVEMENT_MODE.RAGDOLL):
-                transform.parent = null;
-                if (DoOnceRagdoll)
-                {
-                    OffSet = (transform.position - OwnedPlayer.GetComponent<Rigidbody>().velocity).normalized*10f;
-                    DoOnceRagdoll = false;
-                    DoOnceDefault = true;
-                }
-                HandleRagdollMovement();
+                //transform.parent = null;
+                //if (DoOnceRagdoll)
+                //{
+                //    OffSet = (transform.position - OwnedPlayer.GetComponent<Rigidbody>().velocity).normalized*10f;
+                //    DoOnceRagdoll = false;
+                //    DoOnceDefault = true;
+                //}
+                //HandleRagdollMovement();
                 break;
         }
     }
