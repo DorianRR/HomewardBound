@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 865d274afbc318847b7c995c27e8bf17
+=======
+guid: c8c8e3b6557c4834ab99e59655c6ef5d
+>>>>>>> KaltinLevel
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
