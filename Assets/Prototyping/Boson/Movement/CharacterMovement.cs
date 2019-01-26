@@ -79,8 +79,8 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void PerformJumping()
-    {     
-   
+    {
+
         if (Input.GetButtonDown(aButton) && bIsGrounded)
         {
             Debug.Log("Press a button");
@@ -97,7 +97,7 @@ public class CharacterMovement : MonoBehaviour
         Vector3 veloRef = rb.velocity;
         veloRef.y = 0;
         if (veloRef.magnitude < fMaxSpeed)
-            rb.AddRelativeForce(new Vector3(hori, 0, vert) * (bIsGrounded?fMovementForce:fMovementForce/3), ForceMode.Force);
+            rb.AddRelativeForce(new Vector3(hori, 0, vert) * (bIsGrounded ? fMovementForce : fMovementForce / 3), ForceMode.Force);
 
     }
     private void PerformRotation()
@@ -125,20 +125,41 @@ public class CharacterMovement : MonoBehaviour
     {
         bool _groudned = false;
 
-        Ray ray = new Ray(transform.position, Vector3.down);
-
-        Debug.DrawRay(ray.origin, ray.direction);
-
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, fRaycastDistance))
+        Ray[] ray = new Ray[3];
+        for (int i = -1; i < ray.Length - 1; i++)
         {
-            if(!hit.collider.isTrigger)
-                _groudned = true;
+            ray[i + 1] = new Ray(transform.position + transform.forward * 0.5f * i, Vector3.down);
         }
-        
+        for (int i = 0; i < ray.Length; i++)
+        {
+            Debug.DrawRay(ray[i].origin, ray[i].direction);
+
+        }
+        for (int i = 0; i < ray.Length; i++)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(ray[i], out hit, fRaycastDistance))
+            {
+                if (!hit.collider.isTrigger)
+                {
+                    _groudned = true;
+                    break;
+                }
+
+            }
+        }
+
+
 
         return _groudned;
     }
 
-
+    public void ChangeJumpForce(float _force)
+    {
+        fJumpForce = _force;
+    }
+    public float GetJumpForce()
+    {
+        return fJumpForce;
+    }
 }

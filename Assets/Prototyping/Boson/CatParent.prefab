@@ -76,8 +76,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.77
+  m_Height: 1.73
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4077846291050547843
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37ab4f3291758743b51273272f7a5a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fJumpForce: 700
+  fJumpForce: 800
   fMovementForce: 100
   fRestrictAngle: 70
   fMaxSpeed: 15
@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4077846292241070427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.39}
+  m_LocalPosition: {x: 0, y: 0.368, z: 0.426}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4077846291050547965}
