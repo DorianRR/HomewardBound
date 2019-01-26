@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5202539608089883490}
   - component: {fileID: 5202539608089883491}
   - component: {fileID: 1654329660}
+  - component: {fileID: 743098028}
   m_Layer: 0
   m_Name: Player1Camera
   m_TagString: MainCamera
@@ -96,6 +97,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 0e67afb059180b049b55fcbe454b03f3, type: 2}
+--- !u!114 &743098028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202539608089883500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7e01efb638d8245bea54e9454e82d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
+  shakeAmount: 3
+  shakeDuration: 0.027
+  smooth: 0
+  smoothAmount: 1
 --- !u!1 &5202539609755657904
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +126,7 @@ GameObject:
   - component: {fileID: 5202539609755657911}
   - component: {fileID: 5202539609755657910}
   - component: {fileID: 1781951115}
+  - component: {fileID: 430707288}
   m_Layer: 0
   m_Name: Player2Camera
   m_TagString: Untagged
@@ -192,6 +211,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 0e67afb059180b049b55fcbe454b03f3, type: 2}
+--- !u!114 &430707288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202539609755657904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7e01efb638d8245bea54e9454e82d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
+  shakeAmount: 3
+  shakeDuration: 0.027
+  smooth: 0
+  smoothAmount: 1
 --- !u!1 &5202539609805319178
 GameObject:
   m_ObjectHideFlags: 0
