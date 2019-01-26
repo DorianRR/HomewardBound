@@ -53,6 +53,7 @@ public class CameraShake : MonoBehaviour
         if (!isRunning) StartCoroutine(Shake());//Only call the coroutine if it isn't currently running. Otherwise, just set the variables.
     }
 
+
     public void ShakeCameraScale(float i_scale, float duration)
     {
 
