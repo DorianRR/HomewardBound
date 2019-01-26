@@ -27,8 +27,8 @@ public class CameraManager : MonoBehaviour
             case 1:
                 break;
             case 2:
-                m_PlayerCameras[0].rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
-                m_PlayerCameras[1].rect = new Rect(0.5f, 0.0f, 1.0f, 0.5f);
+                m_PlayerCameras[1].rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
+                m_PlayerCameras[0].rect = new Rect(0.0f, 0.5f, 1.0f, 0.5f);
                 break;
             case 3:
                 m_PlayerCameras[0].rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
