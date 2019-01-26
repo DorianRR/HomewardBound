@@ -19,7 +19,8 @@ public class CameraController : MonoBehaviour
     [Range(0.01f, 1)]
     private float CameraRotationLag;
 
-    private Vector3 MyVelocity = Vector3.zero;
+    private Vector3 OffSet = Vector3.zero;
+    private bool DoOnce = true;
 
     void Update()
     {
@@ -27,10 +28,18 @@ public class CameraController : MonoBehaviour
         switch (OwnedPlayer.Move_Mode)
         {
             case (MOVEMENT_MODE.DEFAULT):
+                DoOnce = true;
                 HandleDefaultMovement();
                 break;
 
             case (MOVEMENT_MODE.RAGDOLL):
+                transform.parent = null;
+                if (DoOnce)
+                {
+                    OffSet = transform.position - OwnedPlayer.GetComponent<Rigidbody>().velocity;
+                    DoOnce = false;
+                }
+
                 HandleRagdollMovement();
                 break;
         }
@@ -47,7 +56,6 @@ public class CameraController : MonoBehaviour
 
     private void HandleRagdollMovement()
     {
-        transform.parent = null;
         transform.position = new Vector3(OwnedPlayer.transform.position.x, OwnedPlayer.transform.position.y, OwnedPlayer.transform.position.z);
 
 

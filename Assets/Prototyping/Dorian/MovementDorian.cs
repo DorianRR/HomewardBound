@@ -53,7 +53,7 @@ public class MovementDorian : MonoBehaviour
         {
 
             GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(5, 20), Random.Range(5, 20), Random.Range(5, 20)), ForceMode.Impulse);
-            GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(Random.Range(5, 20), Random.Range(5, 20), Random.Range(5, 20)), ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(Random.Range(1, 10), Random.Range(1, 10), Random.Range(1, 10)), ForceMode.Impulse);
             Move_Mode = MOVEMENT_MODE.RAGDOLL;
         }
 
@@ -61,7 +61,7 @@ public class MovementDorian : MonoBehaviour
 
     private void HandleRagdoll()
     {
-        if(!(GetComponent<Rigidbody>().velocity.magnitude > 100))
+        if(!(GetComponent<Rigidbody>().velocity.magnitude > 10))
         {
             Move_Mode = MOVEMENT_MODE.DEFAULT;
         }
