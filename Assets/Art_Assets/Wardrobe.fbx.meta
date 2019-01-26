@@ -1,86 +1,14 @@
 fileFormatVersion: 2
-guid: d15be12a7c5ab9b4f9587b7d4554681e
+guid: a32e607bfc8c78542b08fff9fd44db8a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: bFoot_L
-    100002: bFoot_R
-    100004: bLeg01_L
-    100006: bLeg01_R
-    100008: bLeg02_L
-    100010: bLeg02_R
-    100012: bLeg03_L
-    100014: bLeg03_R
-    100016: //RootNode
-    100018: ear01_L
-    100020: ear01_R
-    100022: ear02_L
-    100024: ear02_R
-    100026: ear03_L
-    100028: ear03_R
-    100030: fFoot_L
-    100032: fFoot_R
-    100034: fLeg01_L
-    100036: fLeg01_R
-    100038: fLeg02_L
-    100040: fLeg02_R
-    100042: head
-    100044: hip
-    100046: neck
-    100048: pCube1
-    100050: sholder_L
-    100052: sholder_R
-    100054: spine01
-    100056: spine02
-    100058: spine03
-    100060: spine04
-    100062: tail01
-    100064: tail02
-    100066: tail03
-    100068: tail04
-    100070: tail05
-    100072: tail06
-    400000: bFoot_L
-    400002: bFoot_R
-    400004: bLeg01_L
-    400006: bLeg01_R
-    400008: bLeg02_L
-    400010: bLeg02_R
-    400012: bLeg03_L
-    400014: bLeg03_R
-    400016: //RootNode
-    400018: ear01_L
-    400020: ear01_R
-    400022: ear02_L
-    400024: ear02_R
-    400026: ear03_L
-    400028: ear03_R
-    400030: fFoot_L
-    400032: fFoot_R
-    400034: fLeg01_L
-    400036: fLeg01_R
-    400038: fLeg02_L
-    400040: fLeg02_R
-    400042: head
-    400044: hip
-    400046: neck
-    400048: pCube1
-    400050: sholder_L
-    400052: sholder_R
-    400054: spine01
-    400056: spine02
-    400058: spine03
-    400060: spine04
-    400062: tail01
-    400064: tail02
-    400066: tail03
-    400068: tail04
-    400070: tail05
-    400072: tail06
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    4300000: pCube1
-    9500000: //RootNode
-    13700000: pCube1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Wardrobe1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -112,14 +40,14 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -133,8 +61,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 100
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -161,7 +89,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

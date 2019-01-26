@@ -83,7 +83,7 @@ public class CharacterMovement : MonoBehaviour
    
         if (Input.GetButtonDown(aButton) && bIsGrounded)
         {
-            //Debug.Log("Press a button");
+            Debug.Log("Press a button");
             rb.AddForce(new Vector3(0, fJumpForce, 0));
         }
     }
@@ -97,7 +97,7 @@ public class CharacterMovement : MonoBehaviour
         Vector3 veloRef = rb.velocity;
         veloRef.y = 0;
         if (veloRef.magnitude < fMaxSpeed)
-            rb.AddRelativeForce(new Vector3(hori, 0, vert) * (bIsGrounded?fMovementForce:fMovementForce/2), ForceMode.Force);
+            rb.AddRelativeForce(new Vector3(hori, 0, vert) * (bIsGrounded?fMovementForce:fMovementForce/3), ForceMode.Force);
 
     }
     private void PerformRotation()
