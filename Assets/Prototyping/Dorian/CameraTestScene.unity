@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d226bc57720027449abffe351b927b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfSamplesPerSecond: 2
+  NumberOfSamplesPerSecond: 5
   AggregateScore: 1
   PendingScore: 1
 --- !u!1 &397679212
