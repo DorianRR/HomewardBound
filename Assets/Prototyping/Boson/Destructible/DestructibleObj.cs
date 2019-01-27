@@ -34,6 +34,10 @@ public class DestructibleObj : MonoBehaviour
             DestroyObject();
 
         }
+        else if(collision.gameObject.tag == "Player")
+        {
+            GetComponent<Rigidbody>().useGravity = true;
+        }
     }
 
 

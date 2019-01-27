@@ -49,7 +49,7 @@ public class CharacterMovement : MonoBehaviour
     private CapsuleCollider capCollider;
     private Collider[] colliders;
     private Transform camParent;
-    
+
     [SerializeField]
     private GameObject hip = null;
 
@@ -57,6 +57,8 @@ public class CharacterMovement : MonoBehaviour
     private GameObject temp = null;
 
     private Transform LookAtParent;
+
+    private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -73,21 +75,29 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             GameManager.Instance.QuitGame();
         }
-        if (Input.GetKeyDown(KeyCode.Space) && moveMode == MovementMode.Default)
+        if (Input.GetButtonDown(aButton) && bIsGrounded && moveMode == MovementMode.Default)
         {
             moveMode = MovementMode.Ragdoll;
             RagdollUpdate();
         }
-       else if (Input.GetKeyDown(KeyCode.Space) && moveMode == MovementMode.Ragdoll)
+
+        else if (moveMode == MovementMode.Ragdoll)
         {
-            moveMode = MovementMode.Default;
-            temp.SetActive(true);
-            hip.SetActive(false);
-            LookAtParent = transform.GetChild(1);
+            timer += Time.deltaTime;
+            if (timer > 3)
+            {
+                timer = 0;
+                moveMode = MovementMode.Default;
+                temp.SetActive(true);
+                hip.SetActive(false);
+                LookAtParent = transform.GetChild(1);
+            }
+
 
         }
 
@@ -97,7 +107,7 @@ public class CharacterMovement : MonoBehaviour
         PerformJumping();
         if (transform.position.y < .1f)
         {
-           // transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            // transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
         switch (moveMode)
@@ -106,8 +116,8 @@ public class CharacterMovement : MonoBehaviour
             case MovementMode.Default:
                 break;
             case MovementMode.Ragdoll:
-                hip.transform.GetChild(0).GetComponent<Rigidbody>().MovePosition(hip.transform.parent.position + new Vector3(0,1f,0));
-              
+                hip.transform.GetChild(0).GetComponent<Rigidbody>().MovePosition(hip.transform.parent.position + new Vector3(0, 1f, 0));
+
                 break;
         }
     }
@@ -117,7 +127,7 @@ public class CharacterMovement : MonoBehaviour
         for (int i = 0; i < colliders.Length; i++)
         {
             Physics.IgnoreCollision(colliders[i], capCollider, true);
-            colliders[i].GetComponent<Rigidbody>().useGravity = false;
+            //colliders[i].GetComponent<Rigidbody>().useGravity = false;
         }
     }
 
@@ -144,6 +154,7 @@ public class CharacterMovement : MonoBehaviour
         {
             Debug.Log("Press a button");
             rb.AddForce(new Vector3(0, fJumpForce, 0));
+
         }
     }
 
@@ -233,7 +244,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void RagdollUpdate()
     {
-       // transform.GetComponent<CapsuleCollider>().enabled = false;
+        // transform.GetComponent<CapsuleCollider>().enabled = false;
         temp.SetActive(false);
         hip.SetActive(true);
         LookAtParent = transform.GetChild(1).GetChild(1).GetChild(0);
