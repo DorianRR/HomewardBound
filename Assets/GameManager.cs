@@ -2,7 +2,7 @@
 
 public class GameManager : MonoBehaviour
 {
-    public GameManager Instance;
+    public static GameManager Instance;
 
     // Start is called before the first frame update
     void Start()
