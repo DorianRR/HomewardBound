@@ -37,7 +37,7 @@ public class BouncingArea : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("PlayerProperties"))
         {
             CharacterMovement _cm = collision.collider.GetComponent<CharacterMovement>();
             _originForce = _cm.GetJumpForce();
@@ -47,7 +47,7 @@ public class BouncingArea : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("PlayerProperties"))
         {
             BounceDown(collision.collider.GetComponent<CharacterMovement>());
         }

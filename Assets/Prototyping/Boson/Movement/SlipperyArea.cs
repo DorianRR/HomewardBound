@@ -22,7 +22,7 @@ public class SlipperyArea : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("PlayerProperties"))
         {
             CharacterMovement _cm = collision.collider.GetComponent<CharacterMovement>();
             collision.collider.GetComponent<Rigidbody>().drag = 0;
@@ -36,7 +36,7 @@ public class SlipperyArea : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("PlayerProperties"))
         {
             CharacterMovement _cm = collision.collider.GetComponent<CharacterMovement>();
             _cm.fMovementForce = _originForce;
