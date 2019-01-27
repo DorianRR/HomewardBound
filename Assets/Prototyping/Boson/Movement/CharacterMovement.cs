@@ -15,8 +15,8 @@ public class CharacterMovement : MonoBehaviour
     [Header("Force")]
     [SerializeField]
     private float fJumpForce;
-    [SerializeField]
-    private float fMovementForce;
+    //[SerializeField]
+    public float fMovementForce;
     [Header("Restrict")]
     [SerializeField]
     private float fRestrictAngle;
@@ -27,6 +27,8 @@ public class CharacterMovement : MonoBehaviour
     public MovementMode moveMode = MovementMode.Default;
     [SerializeField]
     private float fRaycastDistance = 0.01f;
+    [SerializeField]
+    private float fSlidingForce;
 
     // Parameter
     [SerializeField]
@@ -124,7 +126,9 @@ public class CharacterMovement : MonoBehaviour
         Vector3 veloRef = rb.velocity;
         veloRef.y = 0;
         if (veloRef.magnitude < fMaxSpeed)
+        {
             rb.AddRelativeForce(new Vector3(hori, 0, vert) * (bIsGrounded ? fMovementForce : fMovementForce / 3), ForceMode.Force);
+        }
 
     }
     private void PerformRotation()
@@ -176,8 +180,6 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-
-
         return _groudned;
     }
 
@@ -196,4 +198,5 @@ public class CharacterMovement : MonoBehaviour
         temp.SetActive(false);
         hip.SetActive(true);
     }
+
 }

@@ -38,7 +38,7 @@ public class SnagArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerProperties"))
         {
             Debug.Log(other.name + " Enter");
             Rigidbody rb = other.GetComponent<Rigidbody>();
@@ -52,7 +52,7 @@ public class SnagArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerProperties"))
         {
             if (snaggedPlayers.Contains(other.GetComponent<Rigidbody>()))
             {

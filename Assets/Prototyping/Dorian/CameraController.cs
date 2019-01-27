@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
@@ -61,8 +59,9 @@ public class CameraController : MonoBehaviour
         //transform.position = Vector3.Lerp(transform.position, new Vector3(OwnedPlayer.transform.position.x, OwnedPlayer.transform.position.y + 0.75f, OwnedPlayer.transform.position.z - 0.5f) + OffSet, CameraPositionLag);
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((OwnedPlayer.transform.position - transform.position).normalized, transform.up), CameraRotationLag);
         
+
     }
-    
+
 
     private void HandleDefaultMovement()
     {

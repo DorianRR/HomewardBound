@@ -43,4 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd80207d91d4a34b95a27a74646dad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
+  PlayerPrefab: {fileID: 2944064762803723365, guid: 38cee72ef6684054bb983c034a8d4a40,
+    type: 3}
+  PlayerPresetProperties:
+  - StartPosition: {fileID: 0}
+  - StartPosition: {fileID: 0}
