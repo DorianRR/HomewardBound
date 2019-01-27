@@ -119,14 +119,26 @@ public class GameManager : MonoBehaviour
         }
 
         // Create Players
-        foreach (PlayerProperties l_PProperty in PlayerPresetProperties)
+        for (var index = 0; index < PlayerPresetProperties.Count; index++)
         {
-            GameObject l_newPlayer = Instantiate(PlayerPrefab, l_PProperty.StartPosition.transform.position, Quaternion.identity,
-                this.transform);
-            m_CurrentPlayers.Add(l_newPlayer);
+            PlayerProperties l_PProperty = PlayerPresetProperties[index];
+            CreatePlayer(index + 1, l_PProperty);
         }
-
     }
+
+
+    public void CreatePlayer(int _ID, PlayerProperties i_Property)
+    {
+        GameObject go = Instantiate(PlayerPrefab, i_Property.StartPosition.transform.position,
+            Quaternion.identity,
+            this.transform);
+        go.GetComponent<CharacterMovement>().SetControllerID(_ID);
+        go.name = "Player_" + _ID;
+
+
+        m_CurrentPlayers.Add(go);
+    }
+
 
     public void UnloadPlayerObjects()
     {
