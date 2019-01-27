@@ -31,7 +31,6 @@ public class CanvasCameraManager : MonoBehaviour
         m_PlayerCanvases = new List<Canvas>();
 
         // Finds all cameras on all of the players
-
         foreach (GameObject l_PlayerGameObject in m_PlayersWithCameras)
         {
             Camera l_PlayerCamera = l_PlayerGameObject.GetComponentsInChildren<Camera>().Single();
