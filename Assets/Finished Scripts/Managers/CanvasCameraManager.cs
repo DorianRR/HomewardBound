@@ -104,6 +104,7 @@ public class CanvasCameraManager : MonoBehaviour
             Canvas l_PlayerCanvas = Instantiate(PlayerCanvasPrefab, this.transform);
             l_PlayerCanvas.renderMode = RenderMode.ScreenSpaceCamera;
             l_PlayerCanvas.worldCamera = l_Camera;
+            l_PlayerCanvas.planeDistance = 1.0f;// Why do I have to do this? Cause the Screen Space Camera doesn't have a lot of options.
             m_PlayerCanvases.Add(l_PlayerCanvas);
         }
     }

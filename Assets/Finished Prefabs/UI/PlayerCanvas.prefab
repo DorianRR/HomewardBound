@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1768854528599713013}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Multiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 892122269742116479}
   - component: {fileID: 892122269742116478}
   - component: {fileID: 3120715326820367598}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4627971858512525193}
   - component: {fileID: 754338627641646812}
   - component: {fileID: 4217539035387381070}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MultiplierValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 572540928157905355}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TopRightAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 3463014470329266230}
   - component: {fileID: 5155507384949577158}
   - component: {fileID: 351228634383160056}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MultiplierLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6392659489448349894}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7623874575686525197}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MultiplierScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 2400104589837572583}
   - component: {fileID: 892150943582852749}
   - component: {fileID: 4054053913820758208}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ScoreLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5023563514785720595}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TopLeftAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7514038959469880640}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CenterAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 8826579235743092502}
   - component: {fileID: 4186130237271713028}
   - component: {fileID: 1735044897803125967}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ScoreValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 2925453231891007058}
   - component: {fileID: 5189643922412855051}
   - component: {fileID: 2897154336039387782}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MultiplierScoreValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,7 +1147,7 @@ GameObject:
   - component: {fileID: 1199579226521222371}
   - component: {fileID: 8587425580829197042}
   - component: {fileID: 7953814709813625437}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MultiplierScoreLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
