@@ -565,9 +565,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d226bc57720027449abffe351b927b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfSamplesPerSecond: 2
+  OwningPlayer: {fileID: 226689922}
+  NumberOfSamplesPerSecond: 5
   AggregateScore: 1
   PendingScore: 1
+  slideTimer: 0
 --- !u!1 &397679212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,9 +2751,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1273860368, guid: 04896857d39ce25449479f48fc8defdb, type: 3}
-      propertyPath: m_Name
-      value: cat02
+    - target: {fileID: 1273860482, guid: 04896857d39ce25449479f48fc8defdb, type: 3}
+      propertyPath: m_MassScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1273630000, guid: 04896857d39ce25449479f48fc8defdb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2809,9 +2811,9 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 35
       objectReference: {fileID: 0}
-    - target: {fileID: 1273860482, guid: 04896857d39ce25449479f48fc8defdb, type: 3}
-      propertyPath: m_MassScale
-      value: 1
+    - target: {fileID: 1273860368, guid: 04896857d39ce25449479f48fc8defdb, type: 3}
+      propertyPath: m_Name
+      value: cat02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04896857d39ce25449479f48fc8defdb, type: 3}
