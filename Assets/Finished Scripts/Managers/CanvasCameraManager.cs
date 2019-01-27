@@ -133,8 +133,29 @@ public class CanvasCameraManager : MonoBehaviour
         MainCamera.enabled = true;
     }
 
+    public void SetPlayerScore(int i_playerIndex, int i_Score)
+    {
+        if (i_playerIndex < 0 || i_playerIndex > m_PlayerCanvases.Count)
+            Debug.LogError("Set Player Score Index not found for:" + i_playerIndex);
 
+        m_PlayerCanvases[i_playerIndex].GetComponent<PlayerCanvas>().SetScore(i_Score);
+    }
 
+    public void SetPlayerMultiplier(int i_playerIndex, int i_Multiplier)
+    {
+        if (i_playerIndex < 0 || i_playerIndex > m_PlayerCanvases.Count)
+            Debug.LogError("Set Multiplier Index not found for:" + i_playerIndex);
+
+        m_PlayerCanvases[i_playerIndex].GetComponent<PlayerCanvas>().SetMultiplier(i_Multiplier);
+    }
+
+    public void SetPlayerMultiplierScore(int i_playerIndex, int i_MultiplierScore)
+    {
+        if (i_playerIndex < 0 || i_playerIndex > m_PlayerCanvases.Count)
+            Debug.LogError("Set Multiplier Score Index not found for:" + i_playerIndex);
+
+        m_PlayerCanvases[i_playerIndex].GetComponent<PlayerCanvas>().SetMultiplierScore(i_MultiplierScore);
+    }
 
     public void UpdateMainUI(GameStates i_newState)
     {

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PointsManager : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class PointsManager : MonoBehaviour
     private GameObject OwningPlayer = null;
 
     [SerializeField]
-    [Range(1,10)]
+    [Range(1, 10)]
     private int NumberOfSamplesPerSecond = 2;
 
     public float AggregateScore;
@@ -27,9 +25,9 @@ public class PointsManager : MonoBehaviour
     private Vector3[] DeltaRotationSamepls;
 
     private float[] DeltaXRot;
- 
-    private Vector3 RotationAtLastSample;
 
+    private Vector3 RotationAtLastSample;
+    private int m_Index; // Most Ghetto Ass way to determine index. But quick
 
 
     private void Start()
@@ -37,8 +35,6 @@ public class PointsManager : MonoBehaviour
         timer = 0;
         DeltaRotationSamepls = new Vector3[NumberOfSamplesPerSecond];
         DeltaXRot = new float[NumberOfSamplesPerSecond];
-        
-
     }
 
     void Update()
@@ -46,11 +42,11 @@ public class PointsManager : MonoBehaviour
         bool tempbool1 = false;
         timer += Time.deltaTime;
 
-        if(timer > 1.0f/NumberOfSamplesPerSecond)
+        if (timer > 1.0f / NumberOfSamplesPerSecond)
         {
             DeltaXRot[positionInSample] = Mathf.Acos(Mathf.Clamp(Vector3.Dot(transform.forward.normalized, RotationAtLastSample.normalized), -1f, 1f));
-            
-            
+
+
             //DeltaRotationSamepls[positionInSample] = (transform.forward.normalized - RotationAtLastSample.normalized) ;
             if (positionInSample++ > DeltaRotationSamepls.Length - 2)
             {
@@ -63,11 +59,16 @@ public class PointsManager : MonoBehaviour
 
         bool tempbool2 = CheckForSlide();
 
-        if(!tempbool2 && !tempbool1)
+        if (!tempbool2 && !tempbool1)
         {
             AggregateScore += PendingScore;
             PendingScore = 0;
         }
+
+        // Update UI Scores
+        CanvasCameraManager.Instance.SetPlayerScore(m_Index, (int)AggregateScore);
+        //CanvasCameraManager.Instance.SetPlayerMultiplier(m_Index, (int)Mulp);
+        CanvasCameraManager.Instance.SetPlayerMultiplierScore(m_Index, (int)PendingScore);
     }
 
     bool CheckForSlide()
@@ -113,6 +114,15 @@ public class PointsManager : MonoBehaviour
             spinTimer = 0;
             return false;
         }
+    }
+
+    /// <summary>
+    /// Ghetto ass way to store index
+    /// </summary>
+    /// <param name="i_index">Index of the i.</param>
+    public void SetIndex(int i_index)
+    {
+        m_Index = i_index;
     }
 }
 

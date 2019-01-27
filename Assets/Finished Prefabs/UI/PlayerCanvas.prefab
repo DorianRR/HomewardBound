@@ -150,7 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreValue: {fileID: 1735044897803125967}
+  MultiplierSection: {fileID: 1768854528599713013}
   MultiplierValue: {fileID: 4217539035387381070}
+  MultiplierScoreSection: {fileID: 7623874575686525197}
   MultiplierScoreValue: {fileID: 2897154336039387782}
 --- !u!1 &1204547943004890021
 GameObject:
@@ -794,7 +796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7514038959469880640
 RectTransform:
   m_ObjectHideFlags: 0

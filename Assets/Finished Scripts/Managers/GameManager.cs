@@ -122,19 +122,23 @@ public class GameManager : MonoBehaviour
         for (var index = 0; index < PlayerPresetProperties.Count; index++)
         {
             PlayerProperties l_PProperty = PlayerPresetProperties[index];
-            CreatePlayer(index + 1, l_PProperty);
+            CreatePlayer(index, index + 1, l_PProperty);
         }
     }
 
 
-    public void CreatePlayer(int _ID, PlayerProperties i_Property)
+    public void CreatePlayer(int i_index, int _ID, PlayerProperties i_Property)
     {
         GameObject go = Instantiate(PlayerPrefab, i_Property.StartPosition.transform.position,
             Quaternion.identity,
             this.transform);
         go.GetComponent<CharacterMovement>().SetControllerID(_ID);
+        PointsManager l_PManager = go.GetComponentInChildren<PointsManager>();
+        if (l_PManager == null)
+            Debug.LogError("Could not Find player's Points Manager for index:" + i_index);
+        else
+            go.GetComponentInChildren<PointsManager>().SetIndex(i_index);
         go.name = "Player_" + _ID;
-
 
         m_CurrentPlayers.Add(go);
     }
