@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasCameraManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class CanvasCameraManager : MonoBehaviour
     [SerializeField] private RectTransform PlayMainScreen;
     [SerializeField] private RectTransform EndMainScreen;
     [SerializeField] private Camera MainCamera;
+    //[SerializeField] private Button StartButton;
+    //[SerializeField] private Button InstructionsButton;
 
 
     public static CanvasCameraManager Instance;
@@ -38,6 +41,7 @@ public class CanvasCameraManager : MonoBehaviour
 
         MainCamera.enabled = true;
 
+        //StartButton.onClick.AddListener(() => { GameManager.Instance.UpdateGameStates(GameStates.PLAY); });
     }
 
     // Start is called before the first frame update
