@@ -382,8 +382,7 @@ MonoBehaviour:
   StartMainScreen: {fileID: 6719946232688967584}
   PlayMainScreen: {fileID: 1243094950}
   EndMainScreen: {fileID: 1580889193}
-  MainCamera: {fileID: 8260687128184208168, guid: 38cee72ef6684054bb983c034a8d4a40,
-    type: 3}
+  MainCamera: {fileID: 0}
 --- !u!1 &6821545359366383996
 GameObject:
   m_ObjectHideFlags: 0
