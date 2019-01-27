@@ -64,10 +64,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameStates.PLAY:
-                if (Input.GetButtonDown("Submit"))
-                {
-                    UpdateGameStates(GameStates.END);
-                }
                 break;
             case GameStates.END:
                 if (Input.GetButtonDown("Submit"))
