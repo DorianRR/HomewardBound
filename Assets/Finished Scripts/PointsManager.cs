@@ -85,7 +85,7 @@ public class PointsManager : MonoBehaviour
         {
             PendingScore += 1;
             slideTimer += Time.deltaTime;
-            PendingScore *= 1 + (slideTimer / 10);
+            PendingScore += 1 + (slideTimer *100);
             isSliding = true;
             return true;
         }
