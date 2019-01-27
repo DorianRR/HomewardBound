@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject OwnedPlayer = null;
+    private MovementDorian OwnedPlayer = null;
 
     [SerializeField]
     private GameObject[] otherPlayers = new GameObject[4];

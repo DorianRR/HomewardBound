@@ -19,6 +19,11 @@ public class PointsManager : MonoBehaviour
     private float timer;
     private int positionInSample = 0;
 
+    public float spinTimer = 0;
+    public float slideTimer = 0;
+    public bool isSliding = false;
+    public bool isSpinning = false;
+
     private Vector3[] DeltaRotationSamepls;
 
     private float[] DeltaXRot;
@@ -44,8 +49,7 @@ public class PointsManager : MonoBehaviour
         {
             DeltaXRot[positionInSample] = Mathf.Acos(Mathf.Clamp(Vector3.Dot(transform.forward.normalized, RotationAtLastSample.normalized), -1f, 1f));
             
-
-
+            
             //DeltaRotationSamepls[positionInSample] = (transform.forward.normalized - RotationAtLastSample.normalized) ;
             if (positionInSample++ > DeltaRotationSamepls.Length - 2)
             {
@@ -61,38 +65,43 @@ public class PointsManager : MonoBehaviour
 
     void CheckForSlide()
     {
-        if(OwningPlayer)
+        if (OwningPlayer.GetComponent<Rigidbody>().velocity.magnitude < 10)
+        {
+            slideTimer = 0;
+            isSliding = false;
+            return;
+
+        }
+        float temp = Mathf.Acos(Vector3.Dot(transform.forward.normalized, OwningPlayer.GetComponent<Rigidbody>().velocity.normalized));
+        if (temp > 0.5f)
+        {
+            slideTimer += Time.deltaTime;
+            PendingScore *= 1 + (slideTimer / 10);
+            isSliding = true;
+        }
     }
 
     void CheckForFlip()
     {
         Vector3 temp = Vector3.zero;
         float XFloat = 0;
-        float YFloat = 0;
-        float ZFloat = 0;
-
         foreach (float vec in DeltaXRot)
         {
             XFloat += vec;
         }
-     
-
-
         if (Mathf.Abs(XFloat) > Mathf.PI)
         {
+            spinTimer += Time.deltaTime;
             PendingScore *= Random.Range(1.1f, 1.25f);
+            isSpinning = true;
 
         }
-     
-
-
-
-
-
+        else
+        {
+            isSpinning = false;
+            spinTimer = 0;
+        }
         print(PendingScore);
-        //print(positionInSample);
     }
-
-  
 }
 
