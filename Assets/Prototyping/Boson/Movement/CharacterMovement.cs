@@ -8,7 +8,8 @@ public class CharacterMovement : MonoBehaviour
     {
         Default,
         Sliding,
-        Snagged
+        Snagged,
+        Ragdoll
     }
 
     [Header("Force")]
@@ -46,6 +47,12 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody rb;
     private CapsuleCollider capCollider;
     private Transform camParent;
+    
+    [SerializeField]
+    private GameObject hip = null;
+
+    [SerializeField]
+    private GameObject temp = null;
 
     // Start is called before the first frame update
     void Start()
@@ -53,15 +60,35 @@ public class CharacterMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capCollider = GetComponent<CapsuleCollider>();
         camParent = transform.GetChild(0);
+        hip.SetActive(false);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        bIsGrounded = IsGrounded();
-        PerformRotation();
-        PerformMovement();
-        PerformJumping();
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(aButton))
+        {
+            moveMode = MovementMode.Ragdoll;
+        }
+
+        switch (moveMode)
+        {
+
+            case MovementMode.Default:
+                bIsGrounded = IsGrounded();
+                PerformRotation();
+                PerformMovement();
+                PerformJumping();
+                if (transform.position.y < .1f)
+                {
+                    transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+                }
+                break;
+            case MovementMode.Ragdoll:
+                RagdollUpdate();
+                break;
+        }
+
     }
 
     public void SetControllerID(int _ID)
@@ -165,5 +192,11 @@ public class CharacterMovement : MonoBehaviour
         return fJumpForce;
     }
 
+    private void RagdollUpdate()
+    {
+        transform.GetComponent<CapsuleCollider>().enabled = false;
+        temp.SetActive(false);
+        hip.SetActive(true);
+    }
 
 }
