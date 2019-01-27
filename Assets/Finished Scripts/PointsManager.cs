@@ -14,7 +14,7 @@ public class PointsManager : MonoBehaviour
 
     public float AggregateScore;
 
-    public float PendingScore = 1;
+    public float PendingScore = 0;
 
     private float timer;
     private int positionInSample = 0;
@@ -43,6 +43,7 @@ public class PointsManager : MonoBehaviour
 
     void Update()
     {
+        bool tempbool1 = false;
         timer += Time.deltaTime;
 
         if(timer > 1.0f/NumberOfSamplesPerSecond)
@@ -57,31 +58,40 @@ public class PointsManager : MonoBehaviour
             }
             timer = 0;
             RotationAtLastSample = transform.forward;
-            CheckForFlip();
+            tempbool1 = CheckForFlip();
         }
 
-        CheckForSlide();
+        bool tempbool2 = CheckForSlide();
+
+        if(!tempbool2 && !tempbool1)
+        {
+            AggregateScore += PendingScore;
+            PendingScore = 0;
+        }
     }
 
-    void CheckForSlide()
+    bool CheckForSlide()
     {
         if (OwningPlayer.GetComponent<Rigidbody>().velocity.magnitude < 10)
         {
             slideTimer = 0;
             isSliding = false;
-            return;
+            return false;
 
         }
         float temp = Mathf.Acos(Vector3.Dot(transform.forward.normalized, OwningPlayer.GetComponent<Rigidbody>().velocity.normalized));
         if (temp > 0.5f)
         {
+            PendingScore += 1;
             slideTimer += Time.deltaTime;
             PendingScore *= 1 + (slideTimer / 10);
             isSliding = true;
+            return true;
         }
+        return false;
     }
 
-    void CheckForFlip()
+    bool CheckForFlip()
     {
         Vector3 temp = Vector3.zero;
         float XFloat = 0;
@@ -91,17 +101,18 @@ public class PointsManager : MonoBehaviour
         }
         if (Mathf.Abs(XFloat) > Mathf.PI)
         {
+            PendingScore += 1;
             spinTimer += Time.deltaTime;
             PendingScore *= Random.Range(1.1f, 1.25f);
             isSpinning = true;
-
+            return true;
         }
         else
         {
             isSpinning = false;
             spinTimer = 0;
+            return false;
         }
-        print(PendingScore);
     }
 }
 
