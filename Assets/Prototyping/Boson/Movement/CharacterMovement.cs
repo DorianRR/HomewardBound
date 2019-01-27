@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -66,6 +67,10 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.QuitGame();
+        }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(aButton))
         {
             moveMode = MovementMode.Ragdoll;
@@ -88,6 +93,8 @@ public class CharacterMovement : MonoBehaviour
                 RagdollUpdate();
                 break;
         }
+
+        
 
     }
 

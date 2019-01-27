@@ -159,4 +159,11 @@ public class GameManager : MonoBehaviour
         }
         m_CurrentPlayers.Clear();
     }
+
+    public void QuitGame()
+    {
+        {
+            Application.Quit();
+        }
+    }
 }
