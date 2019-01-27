@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cb267a90168d1664fa614c3aa8937ed4
+guid: 7ff0bb6b061dd074a8c306a60da134f5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,14 +8,13 @@ ModelImporter:
     2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Toilet1
-    9500000: //RootNode
+    4300000: Urn1
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 1724836b4b6fd2c4d8a45507704c5469, type: 2}
+    second: {fileID: 2100000, guid: 882c82d1a5eb8844cba97196d1b1ba60, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -68,7 +67,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -95,7 +94,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

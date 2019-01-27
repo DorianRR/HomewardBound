@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        if (Input.GetButtonDown("J1aButton") || Input.GetAxis("J1Horizontal") > 0)
+        {
+            Debug.Log("Press button");
+        }
     }
 
     public void UpdateGameStates(GameStates i_newState)

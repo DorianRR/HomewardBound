@@ -17,7 +17,12 @@ ModelImporter:
     4300000: CeilingFanBase
     4300002: CeilingFanBlades
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 6d75398d2d152244f80a99bc2aa4e734, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
