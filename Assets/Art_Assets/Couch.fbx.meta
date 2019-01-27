@@ -9,15 +9,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Couch
-<<<<<<< HEAD
-<<<<<<< HEAD
-    6400000: //RootNode
-=======
     9500000: //RootNode
->>>>>>> 1ee3111309764bf484057ed8a9d6e5abeca4a0fb
-=======
-    9500000: //RootNode
->>>>>>> 1ee3111309764bf484057ed8a9d6e5abeca4a0fb
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -51,7 +43,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
