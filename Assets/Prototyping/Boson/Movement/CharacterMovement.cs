@@ -47,6 +47,7 @@ public class CharacterMovement : MonoBehaviour
     // Component
     private Rigidbody rb;
     private CapsuleCollider capCollider;
+    private Collider[] colliders;
     private Transform camParent;
     
     [SerializeField]
@@ -55,12 +56,17 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private GameObject temp = null;
 
+    private Transform LookAtParent;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         capCollider = GetComponent<CapsuleCollider>();
         camParent = transform.GetChild(0);
+        LookAtParent = transform.GetChild(1);
+        colliders = hip.GetComponentsInChildren<Collider>();
+        IgnoreCollision();
         hip.SetActive(false);
     }
 
@@ -71,31 +77,48 @@ public class CharacterMovement : MonoBehaviour
         {
             GameManager.Instance.QuitGame();
         }
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(aButton))
+        if (Input.GetKeyDown(KeyCode.Space) && moveMode == MovementMode.Default)
         {
             moveMode = MovementMode.Ragdoll;
+            RagdollUpdate();
+        }
+       else if (Input.GetKeyDown(KeyCode.Space) && moveMode == MovementMode.Ragdoll)
+        {
+            moveMode = MovementMode.Default;
+            temp.SetActive(true);
+            hip.SetActive(false);
+            LookAtParent = transform.GetChild(1);
+
+        }
+
+        bIsGrounded = IsGrounded();
+        PerformRotation();
+        PerformMovement();
+        PerformJumping();
+        if (transform.position.y < .1f)
+        {
+           // transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
         switch (moveMode)
         {
 
             case MovementMode.Default:
-                bIsGrounded = IsGrounded();
-                PerformRotation();
-                PerformMovement();
-                PerformJumping();
-                if (transform.position.y < .1f)
-                {
-                    transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-                }
                 break;
             case MovementMode.Ragdoll:
-                RagdollUpdate();
+                hip.transform.GetChild(0).GetComponent<Rigidbody>().MovePosition(hip.transform.parent.position + new Vector3(0,1f,0));
+              
                 break;
         }
+    }
 
-        
-
+    void IgnoreCollision()
+    {
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            Physics.IgnoreCollision(colliders[i], capCollider, true);
+            colliders[i].GetComponent<Rigidbody>().useGravity = false;
+        }
     }
 
     public void SetControllerID(int _ID)
@@ -152,12 +175,21 @@ public class CharacterMovement : MonoBehaviour
             fJoyStickSensitivity = 1;
 
         transform.Rotate(transform.up, hori * fJoyStickSensitivity);
-        camParent.Rotate(new Vector3(-vert * fJoyStickSensitivity, 0, 0));
+        //camParent.Rotate(new Vector3(-vert * fJoyStickSensitivity, 0, 0));
+        camParent.RotateAround(LookAtParent.position, camParent.right, -vert * fJoyStickSensitivity);
+        Debug.Log(camParent.eulerAngles);
+        if (camParent.localEulerAngles.x > 40 && camParent.localEulerAngles.x < 180)
+        {
+            camParent.localEulerAngles = new Vector3(40, 0, 0);
+            camParent.localPosition = new Vector3(camParent.localPosition.x, 2.1f, -1.9f);
+        }
+        if (camParent.localEulerAngles.x < 360 - 10 && camParent.localEulerAngles.x > 180)
+        {
+            camParent.localEulerAngles = new Vector3(360 - 10, 0, 0);
+            camParent.localPosition = new Vector3(camParent.localPosition.x, 0f, -2.8f);
 
-        if (camParent.localEulerAngles.x > fRestrictAngle && camParent.localEulerAngles.x < 180)
-            camParent.localEulerAngles = new Vector3(fRestrictAngle, 0, 0);
-        if (camParent.localEulerAngles.x < 360 - fRestrictAngle && camParent.localEulerAngles.x > 180)
-            camParent.localEulerAngles = new Vector3(360 - fRestrictAngle, 0, 0);
+
+        }
     }
     private bool IsGrounded()
     {
@@ -201,9 +233,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void RagdollUpdate()
     {
-        transform.GetComponent<CapsuleCollider>().enabled = false;
+       // transform.GetComponent<CapsuleCollider>().enabled = false;
         temp.SetActive(false);
         hip.SetActive(true);
+        LookAtParent = transform.GetChild(1).GetChild(1).GetChild(0);
     }
 
 }

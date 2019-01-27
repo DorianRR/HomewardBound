@@ -2083,7 +2083,6 @@ GameObject:
   m_Component:
   - component: {fileID: 642612848}
   - component: {fileID: 642612847}
-  - component: {fileID: 642612846}
   m_Layer: 0
   m_Name: TempMainCamera
   m_TagString: MainCamera
@@ -2091,14 +2090,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &642612846
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642612845}
-  m_Enabled: 1
 --- !u!20 &642612847
 Camera:
   m_ObjectHideFlags: 0
@@ -6225,5 +6216,11 @@ PrefabInstance:
       propertyPath: PlayerPresetProperties.Array.data[1].StartPosition
       value: 
       objectReference: {fileID: 1199380996}
+    - target: {fileID: 7803975019353618519, guid: 53bb6872085b4bb44a25898db5388ef8,
+        type: 3}
+      propertyPath: PlayerPrefab
+      value: 
+      objectReference: {fileID: 2461930329775105647, guid: 41df9c250df930d4fbdc596fc1d93242,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53bb6872085b4bb44a25898db5388ef8, type: 3}
