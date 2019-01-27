@@ -10,8 +10,8 @@ public class breakObjectParticleEffect : MonoBehaviour
     {
         if (collision.collider.CompareTag("floor"))
         {
-            breakParticleSystem.EmitParams.transform = this.transform;
-            breakParticleSystem.Play();
+            //breakParticleSystem.EmitParams.transform = this.transform;
+            //breakParticleSystem.Play();
         }
 
     }
