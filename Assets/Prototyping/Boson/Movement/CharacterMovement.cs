@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -30,6 +31,12 @@ public class CharacterMovement : MonoBehaviour
     private float fRaycastDistance = 0.01f;
     [SerializeField]
     private float fSlidingForce;
+
+    [SerializeField]
+    private AudioClip[] ASS;
+
+    [SerializeField]
+    private AudioSource BigPoopyButthole = null;
 
     // Parameter
     [SerializeField]
@@ -82,6 +89,9 @@ public class CharacterMovement : MonoBehaviour
         }
         if (Input.GetButtonDown(aButton) && bIsGrounded && moveMode == MovementMode.Default)
         {
+            BigPoopyButthole.clip = ASS[Random.Range(0, 6)];
+            BigPoopyButthole.volume = 2;
+            BigPoopyButthole.Play();
             moveMode = MovementMode.Ragdoll;
             RagdollUpdate();
         }
@@ -188,7 +198,7 @@ public class CharacterMovement : MonoBehaviour
         transform.Rotate(transform.up, hori * fJoyStickSensitivity);
         //camParent.Rotate(new Vector3(-vert * fJoyStickSensitivity, 0, 0));
         camParent.RotateAround(LookAtParent.position, camParent.right, -vert * fJoyStickSensitivity);
-        Debug.Log(camParent.eulerAngles);
+        //Debug.Log(camParent.eulerAngles);
         if (camParent.localEulerAngles.x > 40 && camParent.localEulerAngles.x < 180)
         {
             camParent.localEulerAngles = new Vector3(40, 0, 0);

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - Exploder
   layers:
   - Default
   - TransparentFX
